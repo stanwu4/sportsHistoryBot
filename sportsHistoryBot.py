@@ -19,15 +19,21 @@ api = realAuthentication
 #then open twitter and create a tweet, copy pasting the stat into the tweet, maybe search up an image of the player on google
 #finally publish the tweet
 #problems: how to fit into 280 characters if the statmuse sentence is longer than that
-class Stats
-    def grabStats(string s):
+class Stats:
+    def grabStats(url):
+        response = response.get(url)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        content = soup.find('h3')
+        for h3 in content:
+            print(p.text)
         
-    def tweetOut(string s):
+    def tweetOut(s):
         api.updateStatus(s)
     def main():
         time = datetime.datetime.now()
-        string tweet = ""
+        tweet = ""
+        url = "https://www.statmuse.com/"
         if(time.strftime("%I:%M:%S %p") == "12:00:00 AM"){
-            grabStats(tweet)
+            grabStats()
             tweetOut(tweet)
         }
